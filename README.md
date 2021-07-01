@@ -13,14 +13,14 @@ We'll be covering the following concepts:
 
 ## Getting Started
 
-0. Fork the this repository on Github to your account.
-0. Clone the repo onto your own computer.
+<!-- 0. Fork the this repository on Github to your account.
+0. Clone the repo onto your own computer. -->
 
 ## The Assignment
 
-The assignment is to implement a customer relationship management (CRM) application.
+<!-- The assignment is to implement a customer relationship management (CRM) application.
 
-Be sure to start by reading over the entire assignment to get a general overview of what you have to do.
+Be sure to start by reading over the entire assignment to get a general overview of what you have to do. -->
 
 ### User Stories
 
