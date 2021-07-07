@@ -48,7 +48,12 @@ end
       print 'Enter a Note: '
       note = gets.chomp
     
-      Contact.create(first_name, last_name, email, note)
+      contact = Contact.create(
+  first_name: first_name,
+  last_name:  last_name,
+  email:      email,
+  note:       note
+)
   end
 
   def modify_existing_contact
