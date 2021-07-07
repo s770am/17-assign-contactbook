@@ -2,9 +2,6 @@ require_relative 'contact'
 
 class CRM
 
-  def initialize
-  end
-
   def main_menu
     while true # repeat indefinitely
       print_main_menu
@@ -28,11 +25,11 @@ end
     when 1 then add_new_contact
     when 2 then modify_existing_contact
     when 3 then delete_contact
-      when 4 then display_all_contacts
-        when 5 then search_by_attribute
-          when 6 then exit(true)
+    when 4 then display_all_contacts
+    when 5 then search_by_attribute
+    when 6 then exit(true)
+    end
   end
-end
   
     def add_new_contact
       print 'Enter First Name: '
@@ -57,21 +54,18 @@ end
 
   def modify_existing_contact
 
-    puts "enter an id or an attribute"
-    id_attra = gets.chomp
-    if id_attra.to_i.is_a?(Integer) && id_attra.to_i != 0 
-    contact = Contact.find(id_attra.to_i)
+    puts "enter an id"
+    id_num = gets.chomp
+    contact = Contact.dovs_find_by("id", id_num)
+    if contact == nil
+      return
+    end
     puts "what attribute would you like to change"
     id_attra = gets.chomp
-    else 
-      puts "what is the current value"
-      value = gets.chomp
-      contact = Contact.dovs_find_by(id_attra, value)
-    end
  puts "enter in the new value"
  nvalue = gets.chomp
-
- case id_attra
+ 
+    case id_attra
     when "first name"
       contact.update(first_name: nvalue)
     when "last name"
@@ -86,15 +80,9 @@ end
   end
 
   def delete_contact
-    puts "enter an id or an attribute"
-    id_attra = gets.chomp
-    if id_attra.to_i.is_a?(Integer) && id_attra.to_i != 0
-    Contact.find(id_attra.to_i).delete
-    else 
-      puts "what is the value"
-      value = gets.chomp
-      Contact.dovs_find_by(id_attra, value).delete
-    end
+    puts "enter an id"
+    value = gets.chomp
+      Contact.dovs_find_by("id", value).delete
   end
 
   def display_all_contacts
@@ -106,7 +94,9 @@ end
     attra = gets.chomp
     puts "enter value"
     value = gets.chomp
-    p Contact.dovs_find_by(attra, value)
+    if Contact.dovs_find_by(attra, value) != nil
+      p Contact.dovs_find_by(attra, value)
+    end
   end
 
 

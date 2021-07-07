@@ -39,9 +39,11 @@ class Contact < ActiveRecord::Base
           returner = Contact.find_by(email: value)
         when "note"
           returner = Contact.find_by(note: value)
+        when "id"
+          returner = Contact.find_by(id: value)
         end
         if returner == nil
-         return "oops it seems like we have a problem"
+         puts "oops it seems like we have a problem"
         end
         return returner
       end
