@@ -32,7 +32,6 @@ end
       when 4 then display_all_contacts
         when 5 then search_by_attribute
           when 6 then exit(true)
-            when 7 then print_main_menu
   end
 end
   
@@ -101,3 +100,6 @@ end
 
 a_crm_app = CRM.new
 a_crm_app.main_menu
+at_exit do
+  ActiveRecord::Base.connection.close
+end
