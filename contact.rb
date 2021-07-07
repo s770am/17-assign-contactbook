@@ -28,6 +28,24 @@ class Contact < ActiveRecord::Base
     return "#{@first_name} #{@last_name}"
       end
 
+
+      def self.dovs_find_by(attra, value)
+        case attra
+        when "first name"
+         returner = Contact.find_by(first_name: value)
+        when "last name"
+          returner = Contact.find_by(last_name: value)
+        when "email"
+          returner = Contact.find_by(email: value)
+        when "note"
+          returner = Contact.find_by(note: value)
+        end
+        if returner == nil
+         return "oops it seems like we have a problem"
+        end
+        return returner
+      end
+
   # attr_reader :id
   # attr_accessor :first_name, :last_name, :email, :note
 

@@ -20,7 +20,6 @@ end
     puts '[4] Display all the contacts'
     puts '[5] Search by attribute'
     puts '[6] Exit'
-    puts "[7] to see main menu"
     puts 'Enter a number: '
   end
 
@@ -60,18 +59,28 @@ end
 
     puts "enter an id or an attribute"
     id_attra = gets.chomp
-    if id_attra.to_i.is_a?(Integer)
+    if id_attra.to_i.is_a?(Integer) && id_attra.to_i != 0 
     contact = Contact.find(id_attra.to_i)
     puts "what attribute would you like to change"
     id_attra = gets.chomp
     else 
-      puts "what is the value"
+      puts "what is the current value"
       value = gets.chomp
-      contact = Contact.find_by(id_attra, value)
+      contact = Contact.dovs_find_by(id_attra, value)
     end
  puts "enter in the new value"
  nvalue = gets.chomp
- contact.update(id_attra, nvalue)
+
+ case id_attra
+    when "first name"
+      contact.update(first_name: nvalue)
+    when "last name"
+      contact.update(last_name: nvalue)
+    when "email"
+      contact.update(email: nvalue)
+    when "note"
+      contact.update(note: nvalue)
+    end
 
 
   end
@@ -79,12 +88,12 @@ end
   def delete_contact
     puts "enter an id or an attribute"
     id_attra = gets.chomp
-    if id_attra.to_i.is_a?(Integer)
+    if id_attra.to_i.is_a?(Integer) && id_attra.to_i != 0
     Contact.find(id_attra.to_i).delete
     else 
       puts "what is the value"
       value = gets.chomp
-      Contact.find_by(id_attra, value).delete
+      Contact.dovs_find_by(id_attra, value).delete
     end
   end
 
@@ -97,7 +106,7 @@ end
     attra = gets.chomp
     puts "enter value"
     value = gets.chomp
-    puts Contact.find_by(attra, value).full_name
+    p Contact.dovs_find_by(attra, value)
   end
 
 
